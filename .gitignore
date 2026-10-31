@@ -1,0 +1,69 @@
+# ============================================================
+# EduAgent .gitignore
+# 原则：密钥、个人隐私、机构资料、模型权重、运行产物一律不入库
+# ============================================================
+
+# ---------- 环境变量 / 密钥 ----------
+# .env 与 .env.example 当前内容逐字节相同，都是真实值（DeepSeek / Tavily / JWT / DB 口令）
+# 注意：.env.example 也被忽略，因为它在脱敏前等于 .env；等你把它换成占位符后，删掉下面最后一行即可恢复模板入库
+.env
+.env.local
+.env.*.local
+.env.example
+
+# ---------- Python 缓存与构建产物 ----------
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# ---------- 前端 ----------
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# ---------- 本地模型权重（共约 4.87 GB，首次运行自行下载）----------
+models/
+backend/models/
+
+# ---------- 本地数据库 / 日志 / 运行时文件 ----------
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+*.pid
+scripts/init_db.sql/
+
+# ---------- 个人与机构资料（隐私 / 版权）----------
+# 真实个人简历：含姓名、手机号、邮箱、教育背景、工作经历
+samples/个人简历.pdf
+# 内部课程讲义（LangGraph 课程大纲）与课程文案，公开前需确认版权
+samples/sample1.pdf
+samples/sample2.md
+# 练习用的临时脚本（list.extend 三行 demo）
+samples/aa.py
+# 硬编码了本地 PostgreSQL 口令的连接测试脚本
+check_env.py
+
+# ---------- 个人练习代码（不属于产品代码）----------
+review/
+review/my_output
+
+# ---------- 编辑器 / 操作系统 ----------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
